@@ -5,33 +5,33 @@ $array2 = [];
 $arrayGabung = [];
 $output = ''; 
 
-// Periksa form sudah disubmit
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // format array
-    $array1 = array_filter(array_map('trim', explode(',', $_POST['first_input'] ?? '')));
-    $array2 = array_filter(array_map('trim', explode(',', $_POST['second_input'] ?? '')));
 
-    // Ambil panjang maksimal untuk setiap array
+if ($_SERVER["REQUEST_METHOD"] === "POST") {  // Periksa form sudah disubmit
+    
+    $array1 = array_filter(array_map('trim', explode(',', $_POST['first_input'] ?? ''))); 
+    $array2 = array_filter(array_map('trim', explode(',', $_POST['second_input'] ?? ''))); // format array
+
+    
     $firstLimit = (int)($_POST['first_limit'] ?? 0);
-    $secondLimit = (int)($_POST['second_limit'] ?? 0);
+    $secondLimit = (int)($_POST['second_limit'] ?? 0);// Ambil panjang maksimal untuk setiap array
 
-    // potong array sesuai panjang yang diminta
+    
     $array1 = array_slice($array1, 0, $firstLimit);
-    $array2 = array_slice($array2, 0, $secondLimit);
+    $array2 = array_slice($array2, 0, $secondLimit);// potong array sesuai panjang yang diminta
 
-    // gabung dan urutkan array
+   
     $arrayGabung = array_merge($array1, $array2);
-    sort($arrayGabung);
+    sort($arrayGabung);  // gabung dan urutkan array
 
-    // buat spy terlihat rapi
+    
     $array1final = "[" . implode(", ", $array1) . "]";
     $array2final = "[" . implode(", ", $array2) . "]";
-    $arrayGabungFinal = "[" . implode(", ", $arrayGabung) . "]";
+    $arrayGabungFinal = "[" . implode(", ", $arrayGabung) . "]";// buat spy terlihat rapi
 
-    // Simpan hasil untuk ditampilkan di bawah form
+    
     $output = "<h3>Array Pertama:</h3>$array1final";
     $output .= "<h3>Array Kedua:</h3>$array2final";
-    $output .= "<h3>Array Gabungan:</h3>$arrayGabungFinal";
+    $output .= "<h3>Array Gabungan:</h3>$arrayGabungFinal"; // Simpan hasil untuk ditampilkan di bawah form
 }
 ?>
 
