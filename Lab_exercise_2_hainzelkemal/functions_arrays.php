@@ -1,7 +1,11 @@
 <?php
 include("controll_flow.php"); 
 
-foreach ($mahasiswa as $person) {
-    echo "Hello, " . $person->name . "!<br><br>"; 
+
+function greet($mahasiswa){
+    foreach ($mahasiswa as $person) {
+        echo "Hello, " . $person->name . "!<br><br>"; 
+    }
 }
+greet($mahasiswa); 
 ?>
