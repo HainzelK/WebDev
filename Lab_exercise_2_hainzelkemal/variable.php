@@ -1,6 +1,6 @@
 <?php 
 class Orang{
-    var $name;
+    public $name;
     var $years;
     var $birthday;
     var $days;
